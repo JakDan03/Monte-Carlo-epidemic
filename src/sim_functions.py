@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+
 def symulacja_bazowa():
 
     # --- WCZYTYWANIE DANYCH ---
