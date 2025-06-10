@@ -10,8 +10,8 @@ def symulacja_bazowa():
     # Libraries needed for the tutorial        
     # Downloading the csv file from your GitHub account
     
-    url = "https://raw.githubusercontent.com/JakDan03/Monte-Carlo-epidemic/main/data/input.xlsx"
-    response = requests.get(url).content
+    url = "https://github.com/JakDan03/Monte-Carlo-epidemic/raw/refs/heads/main/data/input.xlsx"
+    response = requests.get(url)
     dane = pd.read_excel(io.BytesIO(response.content), sheet_name="general", engine="openpyxl")
         
     # dane = pd.read_excel("https://github.com/JakDan03/Monte-Carlo-epidemic/tree/main/data/input.xlsx", sheet_name="general")
