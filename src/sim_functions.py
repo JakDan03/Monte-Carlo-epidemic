@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import requests
 import io
+import openpyxl
 
 def symulacja_bazowa():
 
