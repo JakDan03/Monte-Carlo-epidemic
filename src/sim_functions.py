@@ -1,10 +1,19 @@
 import numpy as np
 import pandas as pd
+import requests
+import io
 
 def symulacja_bazowa():
 
     # --- WCZYTYWANIE DANYCH ---
-    dane = pd.read_excel("https://github.com/JakDan03/Monte-Carlo-epidemic/tree/main/data/input.xlsx", sheet_name="general")
+    # Libraries needed for the tutorial        
+    # Downloading the csv file from your GitHub account
+    
+    url = "https://github.com/JakDan03/Monte-Carlo-epidemic/tree/main/data/input.xlsx" # Make sure the url is the raw version of the file on GitHub
+    download = requests.get(url).content
+    dane = pd.read_excel(io.StringIO(download.decode('utf-8')))
+        
+    # dane = pd.read_excel("https://github.com/JakDan03/Monte-Carlo-epidemic/tree/main/data/input.xlsx", sheet_name="general")
     
     # --- WEKTORY ---
     ludnosc_k = np.array(dane['Liczba kobiet'])
