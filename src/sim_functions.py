@@ -7,14 +7,9 @@ import openpyxl
 def symulacja_bazowa():
 
     # --- WCZYTYWANIE DANYCH ---
-    # Libraries needed for the tutorial        
-    # Downloading the csv file from your GitHub account
-    
     url = "https://github.com/JakDan03/Monte-Carlo-epidemic/raw/refs/heads/main/data/input.xlsx"
     response = requests.get(url)
     dane = pd.read_excel(io.BytesIO(response.content), sheet_name="general", engine="openpyxl")
-        
-    # dane = pd.read_excel("https://github.com/JakDan03/Monte-Carlo-epidemic/tree/main/data/input.xlsx", sheet_name="general")
     
     # --- WEKTORY ---
     ludnosc_k = np.array(dane['Liczba kobiet'])
@@ -112,8 +107,10 @@ def symulacja_bazowa():
 def symulacja_choroby():
     
     # --- WCZYTYWANIE DANYCH ---
-    dane = pd.read_excel("data/input.xlsx", sheet_name="general")
-    recovery = pd.read_excel("data/input.xlsx", sheet_name="recovery")
+    url = "https://github.com/JakDan03/Monte-Carlo-epidemic/raw/refs/heads/main/data/input.xlsx"
+    response = requests.get(url)
+    dane = pd.read_excel(io.BytesIO(response.content), sheet_name="general", engine="openpyxl")
+    recovery = pd.read_excel(io.BytesIO(response.content), sheet_name="recovery", engine="openpyxl")
     
     # --- WEKTORY ---
     ludnosc_k = np.array(dane['Liczba kobiet'])
@@ -386,8 +383,10 @@ def symulacja_choroby_szczepionka(szczepionka_start=400, alfa=0.8):
     # alfa: odsetek szczepionek rozdysponowanych dla osób bez odporności nabytej
     
     # --- WCZYTYWANIE DANYCH ---
-    dane = pd.read_excel("data/input.xlsx", sheet_name="general")
-    recovery = pd.read_excel("data/input.xlsx", sheet_name="recovery")
+    url = "https://github.com/JakDan03/Monte-Carlo-epidemic/raw/refs/heads/main/data/input.xlsx"
+    response = requests.get(url)
+    dane = pd.read_excel(io.BytesIO(response.content), sheet_name="general", engine="openpyxl")
+    recovery = pd.read_excel(io.BytesIO(response.content), sheet_name="recovery", engine="openpyxl")
     
     # --- WEKTORY ---
     ludnosc_k = np.array(dane['Liczba kobiet'])
