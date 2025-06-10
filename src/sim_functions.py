@@ -9,9 +9,9 @@ def symulacja_bazowa():
     # Libraries needed for the tutorial        
     # Downloading the csv file from your GitHub account
     
-    url = "https://github.com/JakDan03/Monte-Carlo-epidemic/tree/main/data/input.xlsx" # Make sure the url is the raw version of the file on GitHub
-    download = requests.get(url).content
-    dane = pd.read_excel(io.StringIO(download.decode('utf-8')), sheet_name="general")
+    url = "https://raw.githubusercontent.com/JakDan03/Monte-Carlo-epidemic/main/data/input.xlsx"
+    response = requests.get(url)
+    dane = pd.read_excel(io.BytesIO(response.content), sheet_name="general")
         
     # dane = pd.read_excel("https://github.com/JakDan03/Monte-Carlo-epidemic/tree/main/data/input.xlsx", sheet_name="general")
     
