@@ -371,7 +371,7 @@ def symulacja_choroby():
     
         dzien += 1
 
-    return zdrowi_k_stan, zdrowi_m_stan, chorzy_k_stan, chorzy_m_stan, ozdrowiali_k_stan, ozdrowiali_m_stan, ponownie_chorzy_k_stan, ponownie_chorzy_m_stan, zmarli_ogolem_k_stan, zmarli_ogolem_m_stan, zmarli_choroba_k_stan, zmarli_choroba_m_stan
+    return zdrowi_k_stan, zdrowi_m_stan, urodzeni_k_stan, urodzeni_m_stan, zmarli_ogolem_k_stan, zmarli_ogolem_m_stan, chorzy_k_stan, chorzy_m_stan, ozdrowiali_k_stan, ozdrowiali_m_stan, ponownie_chorzy_k_stan, ponownie_chorzy_m_stan, zmarli_choroba_k_stan, zmarli_choroba_m_stan
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -717,4 +717,4 @@ def symulacja_choroby_szczepionka(szczepionka_start=400, alfa=0.8):
     
         dzien += 1
 
-    return zdrowi_k_stan_2, zdrowi_m_stan_2, chorzy_k_stan_2, chorzy_m_stan_2, ozdrowiali_k_stan_2, ozdrowiali_m_stan_2, ponownie_chorzy_k_stan_2,ponownie_chorzy_m_stan_2, zmarli_ogolem_k_stan_2, zmarli_ogolem_m_stan_2, zmarli_choroba_k_stan_2, zmarli_choroba_m_stan_2, zaszczepieni_k_stan, zaszczepieni_m_stan
+    return zdrowi_k_stan_2, zdrowi_m_stan_2, urodzeni_k_stan_2, urodzeni_m_stan_2, zmarli_ogolem_k_stan_2, zmarli_ogolem_m_stan_2, chorzy_k_stan_2, chorzy_m_stan_2, ozdrowiali_k_stan_2, ozdrowiali_m_stan_2, ponownie_chorzy_k_stan_2,ponownie_chorzy_m_stan_2, zmarli_choroba_k_stan_2, zmarli_choroba_m_stan_2, zaszczepieni_k_stan, zaszczepieni_m_stan
