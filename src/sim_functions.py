@@ -4,7 +4,7 @@ import requests
 import io
 import openpyxl
 
-def symulacja_bazowa():
+def symulacja_bazowa(liczba_dni):
 
     # --- WCZYTYWANIE DANYCH ---
     url = "https://github.com/JakDan03/Monte-Carlo-epidemic/raw/refs/heads/main/data/input.xlsx"
@@ -20,22 +20,21 @@ def symulacja_bazowa():
     
     # --- PARAMETRY ---
     n_rows_dane = len(dane)
-    n_days = 1000
     
     # --- MACIERZE ---
     zdrowi_k = np.zeros(n_rows_dane)
     zdrowi_m = np.zeros(n_rows_dane)
     
-    zdrowi_k_stan_baza = np.zeros(n_days)
-    zdrowi_m_stan_baza = np.zeros(n_days)
-    urodzeni_k_stan_baza = np.zeros(n_days)
-    urodzeni_m_stan_baza = np.zeros(n_days)
-    urodzeni_k = np.zeros((n_days, n_rows_dane))
-    urodzeni_m = np.zeros((n_days, n_rows_dane))
-    zmarli_k = np.zeros((n_days, n_rows_dane))
-    zmarli_m = np.zeros((n_days, n_rows_dane))
-    zmarli_ogolem_k_stan_baza = np.zeros(n_days)
-    zmarli_ogolem_m_stan_baza = np.zeros(n_days)
+    zdrowi_k_stan_baza = np.zeros(liczba_dni)
+    zdrowi_m_stan_baza = np.zeros(liczba_dni)
+    urodzeni_k_stan_baza = np.zeros(liczba_dni)
+    urodzeni_m_stan_baza = np.zeros(liczba_dni)
+    urodzeni_k = np.zeros((liczba_dni, n_rows_dane))
+    urodzeni_m = np.zeros((liczba_dni, n_rows_dane))
+    zmarli_k = np.zeros((liczba_dni, n_rows_dane))
+    zmarli_m = np.zeros((liczba_dni, n_rows_dane))
+    zmarli_ogolem_k_stan_baza = np.zeros(liczba_dni)
+    zmarli_ogolem_m_stan_baza = np.zeros(liczba_dni)
     
     # --- INICJALIZACJA ---
     zdrowi_k[:] = ludnosc_k[:]
@@ -43,7 +42,7 @@ def symulacja_bazowa():
     
     # --- SYMULACJA ---
     dzien = 0
-    while dzien < n_days:
+    while dzien < liczba_dni:
         
         # zgony naturalne
         mean_k = zdrowi_k * p_zgonu_k
@@ -104,7 +103,7 @@ def symulacja_bazowa():
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-def symulacja_choroby():
+def symulacja_choroby(liczba_dni):
     
     # --- WCZYTYWANIE DANYCH ---
     url = "https://github.com/JakDan03/Monte-Carlo-epidemic/raw/refs/heads/main/data/input.xlsx"
@@ -133,7 +132,6 @@ def symulacja_choroby():
     # --- PARAMETRY ---
     n_rows_dane = len(dane)
     n_rows_recovery = len(recovery)
-    n_days = 1000
     
     # --- MACIERZE ---
     zdrowi_k = np.zeros(n_rows_dane)
@@ -145,26 +143,26 @@ def symulacja_choroby():
     ponownie_chorzy_k = np.zeros([n_rows_recovery, n_rows_dane])
     ponownie_chorzy_m = np.zeros([n_rows_recovery, n_rows_dane])
     
-    zdrowi_k_stan = np.zeros(n_days)
-    zdrowi_m_stan = np.zeros(n_days)
-    zachorowania_k_stan = np.zeros(n_days)
-    zachorowania_m_stan = np.zeros(n_days)
-    chorzy_k_stan = np.zeros(n_days)
-    chorzy_m_stan = np.zeros(n_days)
-    ozdrowiali_k_stan = np.zeros(n_days)
-    ozdrowiali_m_stan = np.zeros(n_days)
-    ponownie_chorzy_k_stan = np.zeros(n_days)
-    ponownie_chorzy_m_stan = np.zeros(n_days)
-    urodzeni_k_stan = np.zeros(n_days)
-    urodzeni_m_stan = np.zeros(n_days)
-    urodzeni_k = np.zeros((n_days, n_rows_dane))
-    urodzeni_m = np.zeros((n_days, n_rows_dane))
-    zmarli_k = np.zeros((n_days, n_rows_dane))
-    zmarli_m = np.zeros((n_days, n_rows_dane))
-    zmarli_ogolem_k_stan = np.zeros(n_days)
-    zmarli_ogolem_m_stan = np.zeros(n_days)
-    zmarli_choroba_k_stan = np.zeros(n_days)
-    zmarli_choroba_m_stan = np.zeros(n_days)
+    zdrowi_k_stan = np.zeros(liczba_dni)
+    zdrowi_m_stan = np.zeros(liczba_dni)
+    zachorowania_k_stan = np.zeros(liczba_dni)
+    zachorowania_m_stan = np.zeros(liczba_dni)
+    chorzy_k_stan = np.zeros(liczba_dni)
+    chorzy_m_stan = np.zeros(liczba_dni)
+    ozdrowiali_k_stan = np.zeros(liczba_dni)
+    ozdrowiali_m_stan = np.zeros(liczba_dni)
+    ponownie_chorzy_k_stan = np.zeros(liczba_dni)
+    ponownie_chorzy_m_stan = np.zeros(liczba_dni)
+    urodzeni_k_stan = np.zeros(liczba_dni)
+    urodzeni_m_stan = np.zeros(liczba_dni)
+    urodzeni_k = np.zeros((liczba_dni, n_rows_dane))
+    urodzeni_m = np.zeros((liczba_dni, n_rows_dane))
+    zmarli_k = np.zeros((liczba_dni, n_rows_dane))
+    zmarli_m = np.zeros((liczba_dni, n_rows_dane))
+    zmarli_ogolem_k_stan = np.zeros(liczba_dni)
+    zmarli_ogolem_m_stan = np.zeros(liczba_dni)
+    zmarli_choroba_k_stan = np.zeros(liczba_dni)
+    zmarli_choroba_m_stan = np.zeros(liczba_dni)
     
     # --- FUNKCJA WYBORU P-WY ZDROWIENIA ---
     def get_prob_recovery(grupa, dzien_choroby, mlodzi, sredni, starzy):
@@ -181,7 +179,7 @@ def symulacja_choroby():
     dzien = 0
     zarazenie_dzien = 100
     dni_po_pokonaniu = 0
-    while dzien < n_days:
+    while dzien < liczba_dni:
         # zgony naturalne - zdrowi
         mean_k_z = zdrowi_k * p_zgonu_k
         mean_m_z = zdrowi_m * p_zgonu_m
@@ -377,7 +375,7 @@ def symulacja_choroby():
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-def symulacja_choroby_szczepionka(szczepionka_start=400, alfa=0.8):
+def symulacja_choroby_szczepionka(liczba_dni, szczepionka_start=400, alfa=0.8):
 
     # szczepionka_start: dzień wprowadzenia szczepionki
     # alfa: odsetek szczepionek rozdysponowanych dla osób bez odporności nabytej
@@ -412,7 +410,6 @@ def symulacja_choroby_szczepionka(szczepionka_start=400, alfa=0.8):
     # --- PARAMETRY ---
     n_rows_dane = len(dane)
     n_rows_recovery = len(recovery)
-    n_days = 1000
     
     # --- MACIERZE ---
     zdrowi_k = np.zeros(n_rows_dane)
@@ -426,28 +423,28 @@ def symulacja_choroby_szczepionka(szczepionka_start=400, alfa=0.8):
     zaszczepieni_k = np.zeros(n_rows_dane)
     zaszczepieni_m = np.zeros(n_rows_dane)
     
-    zdrowi_k_stan_2 = np.zeros(n_days)
-    zdrowi_m_stan_2 = np.zeros(n_days)
-    zachorowania_k_stan_2 = np.zeros(n_days)
-    zachorowania_m_stan_2 = np.zeros(n_days)
-    chorzy_k_stan_2 = np.zeros(n_days)
-    chorzy_m_stan_2 = np.zeros(n_days)
-    ozdrowiali_k_stan_2 = np.zeros(n_days)
-    ozdrowiali_m_stan_2 = np.zeros(n_days)
-    ponownie_chorzy_k_stan_2 = np.zeros(n_days)
-    ponownie_chorzy_m_stan_2 = np.zeros(n_days)
-    urodzeni_k_stan_2 = np.zeros(n_days)
-    urodzeni_m_stan_2 = np.zeros(n_days)
-    urodzeni_k = np.zeros((n_days, n_rows_dane))
-    urodzeni_m = np.zeros((n_days, n_rows_dane))
-    zmarli_k = np.zeros((n_days, n_rows_dane))
-    zmarli_m = np.zeros((n_days, n_rows_dane))
-    zmarli_ogolem_k_stan_2 = np.zeros(n_days)
-    zmarli_ogolem_m_stan_2 = np.zeros(n_days)
-    zmarli_choroba_k_stan_2 = np.zeros(n_days)
-    zmarli_choroba_m_stan_2 = np.zeros(n_days)
-    zaszczepieni_k_stan = np.zeros(n_days)
-    zaszczepieni_m_stan = np.zeros(n_days)
+    zdrowi_k_stan_2 = np.zeros(liczba_dni)
+    zdrowi_m_stan_2 = np.zeros(liczba_dni)
+    zachorowania_k_stan_2 = np.zeros(liczba_dni)
+    zachorowania_m_stan_2 = np.zeros(liczba_dni)
+    chorzy_k_stan_2 = np.zeros(liczba_dni)
+    chorzy_m_stan_2 = np.zeros(liczba_dni)
+    ozdrowiali_k_stan_2 = np.zeros(liczba_dni)
+    ozdrowiali_m_stan_2 = np.zeros(liczba_dni)
+    ponownie_chorzy_k_stan_2 = np.zeros(liczba_dni)
+    ponownie_chorzy_m_stan_2 = np.zeros(liczba_dni)
+    urodzeni_k_stan_2 = np.zeros(liczba_dni)
+    urodzeni_m_stan_2 = np.zeros(liczba_dni)
+    urodzeni_k = np.zeros((liczba_dni, n_rows_dane))
+    urodzeni_m = np.zeros((liczba_dni, n_rows_dane))
+    zmarli_k = np.zeros((liczba_dni, n_rows_dane))
+    zmarli_m = np.zeros((liczba_dni, n_rows_dane))
+    zmarli_ogolem_k_stan_2 = np.zeros(liczba_dni)
+    zmarli_ogolem_m_stan_2 = np.zeros(liczba_dni)
+    zmarli_choroba_k_stan_2 = np.zeros(liczba_dni)
+    zmarli_choroba_m_stan_2 = np.zeros(liczba_dni)
+    zaszczepieni_k_stan = np.zeros(liczba_dni)
+    zaszczepieni_m_stan = np.zeros(liczba_dni)
     
     # --- FUNKCJA WYBORU P-STWA ZDROWIENIA ---
     def get_prob_recovery(grupa, dzien_choroby, mlodzi, sredni, starzy):
@@ -464,7 +461,7 @@ def symulacja_choroby_szczepionka(szczepionka_start=400, alfa=0.8):
     dzien = 0
     zarazenie_dzien = 100
     dni_po_pokonaniu = 0
-    while dzien < n_days:
+    while dzien < liczba_dni:
         # zgony naturalne - zdrowi
         mean_k_z = zdrowi_k * p_zgonu_k
         mean_m_z = zdrowi_m * p_zgonu_m
