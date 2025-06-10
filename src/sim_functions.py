@@ -4,7 +4,7 @@ import pandas as pd
 def symulacja_bazowa():
 
     # --- WCZYTYWANIE DANYCH ---
-    dane = pd.read_excel("data/input.xlsx", sheet_name="general")
+    dane = pd.read_excel("content/Monte-Carlo-epidemic/data/input.xlsx", sheet_name="general")
     
     # --- WEKTORY ---
     ludnosc_k = np.array(dane['Liczba kobiet'])
