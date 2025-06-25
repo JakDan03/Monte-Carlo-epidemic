@@ -17,7 +17,7 @@ The simulation is implemented in Python and operates at an aggregated level (age
   - **Recovery and Mortality**: Infected individuals either recover or die according to age and day-of-infection-specific probabilities.
   - **Reinfections**: Recovered individuals can be reinfected at reduced probability.
   - **Vaccination**: A vaccination campaign begins on a predefined day (e.g., day 400), prioritizing older and uninfected individuals. Vaccinated persons use an alternative set of infection probabilities.
-- **Stochasticity**: Core processes (births, deaths, infections, aging) use Poisson and normal distributions to introduce realistic randomness.
+- **Stochasticity**: Core processes (births, deaths, infections, aging) use Poisson and binomial distributions to introduce realistic randomness.
 
 ### Output
 
